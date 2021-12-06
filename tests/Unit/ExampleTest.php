@@ -2,17 +2,17 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Illuminate\Http\Response;
+use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
     public function test_example()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/test');
+
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson(['data'=> true]);
     }
 }
