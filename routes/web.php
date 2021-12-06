@@ -1,5 +1,8 @@
 <?php
 
+use App\Events\OnEventClick;
+use App\Models\User;
+use App\Notifications\InvoicePaid;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/notification', function () {
+    $user = User::where('id', 1)->firstOrFail();
+
+    $invoice = new \App\Models\Invoice();
+    $invoice->save();
+
+    $user->notify(new InvoicePaid($invoice));
+});
+
+Route::get('/event', function () {
+    $user = User::where('id', 1)->firstOrFail();
+
+    $invoice = new \App\Models\Invoice();
+    $invoice->save();
+
+    OnEventClick::dispatch($invoice, $user);
 });
