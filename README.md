@@ -1,66 +1,157 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#Guide 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##Инструкция по установке проекта
 
-## About Laravel
+- Выполнить команду git clone git@github.com:RomanMahola/laravel-intro.git
+- Выполнить команду cd laravel-intro/
+- Выполнить команду composer install
+- Выполнить команду npm install
+- Скопировать файл .env.example в .env
+- Прописать кредлы для базы
+- Выполнить команду php artisan migrate
+- Выполнить команду php artisan serve
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+##Laravel structure and Artisan
+- Выполнить команду git checkout -b structure
+- Выполнить команду git pull origin structure
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Корневой каталог
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Папка app, как вы можете догадаться, содержит код ядра вашего приложения . Ниже мы рассмотрим эту папку подробнее; однако, почти все классы вашего приложения будут находится в этой папке.
 
-## Learning Laravel
+Папка bootstrap содержит файлы, которые загружают фреймворк и настраивают автозагрузку. Также в папке bootstrap находится папка cache, которая содержит сгенерированные фреймворком файлы для оптимизации производительности — например, кэш-файлы маршрутов и сервисов.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Папка config, как гласит её название, содержит все конфигурационные файлы ваших приложений. Будет не лишним прочитать эти файлы и ознакомиться со всеми доступными параметрами.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Папка database содержит миграции и классы для наполнения начальными данными вашей БД. При необходимости эту папку можно использовать для хранения базы данных SQLite.
 
-## Laravel Sponsors
+Папка public содержит файл index.php, который является входной точкой для всех запросов, поступающих в ваше приложение. Также эта папка содержит ваши ресурсы, такие как изображения, JavaScript, CSS.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Папка resources содержит ваши представления, а также сырые, некомпилированные ресурсы, такие как LESS, SASS, JavaScript. А также здесь находятся все «языковые» файлы.
 
-### Premium Partners
+Папка routes содержит все определения маршрутов вашего приложения. По умолчанию в Laravel встроено три файла маршрутов web.php, api.php и console.php.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+- Файл web.php содержит маршруты, которые RouteServiceProvider помещает в группу посредников web, которая обеспечивает состояние сессии, CSRF-защиту и шифрование cookie. Если ваше приложение не предоставляет «stateless» RESTful API, то скорее всего все ваши маршруты можно определить в файле web.php.
 
-## Contributing
+- Файл api.php содержит маршруты, которые RouteServiceProvider помещает в группу посредников api, которая обеспечивает ограничение скорости. Эти маршруты должны быть «stateless», т.е. входящие через эти маршруты запросы должны быть аутентифицированы с помощью токенов и они не будут иметь доступа к состоянию сессии.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Файл console.php — то место, где вы можете определить все свои консольные команды на основе замыканий. Каждое замыкание привязывается к экземпляру команды, обеспечивая простое взаимодействие с методами ввода/вывода каждой команды. Несмотря на то, что в этом файле не определяются HTTP-маршруты, в нём определяются консольные входные точки (пути) в ваше приложение.
 
-## Code of Conduct
+Папка storage содержит скомпилированные Blade-шаблоны, файл-сессии, кэши файлов и другие файлы, создаваемые фреймворком. Эта папка делится на подпапки app, framework и logs. В папке app можно хранить любые файлы, генерируемые вашим приложением. В папке framework хранятся создаваемые фреймворком файлы и кэш. А в папке logs находятся файлы журналов приложения.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Папку storage/app/public можно использовать для хранения пользовательских файлов, таких как аватарки, которые должны быть доступны всем. Вам надо создать символьную ссылку на public/storage, которая ведёт к этой папке. Вы можете создать ссылку командой php artisan storage:link.
 
-## Security Vulnerabilities
+Папка tests содержит ваши автотесты. Изначально там уже есть пример PHPUnit. Класс каждого теста должен иметь в имени суффикс Test. Вы можете запускать свои тесты командами phpunit и php vendor/bin/phpunit.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Папка vendor содержит ваши Composer-зависимости.
 
-## License
+Основная часть вашего приложения находится в каталоге app. По умолчанию этот каталог зарегистрирован под пространством имён App и автоматически загружается с помощью Composer по стандарту автозагрузки PSR-4.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Вы можете изменить это пространство имён с помощью Artisan-команды app:name.
+
+В каталоге app находится ряд дополнительных каталогов, таких как Console, Http и Providers. Можно сказать, что каталоги Console и Http предоставляют API ядра вашего приложения. Протокол HTTP и командная строка — это механизмы взаимодействия с вашим приложением, но они не содержат логики приложения. Другими словами, это просто два способа передачи команд вашему приложению. Каталог Console содержит все ваши Artisan-команды, а каталог Http содержит ваши контроллеры, посредники и запросы.
+
+Многие другие каталоги будут созданы в каталоге app, когда вы выполните Artisan-команду make для генерирования классов. Например, каталог app/Jobs не будет создан, пока вы не выполните Artisan-команду make:job, чтобы сгенерировать класс задачи.
+
+Многие классы в каталоге app можно сгенерировать Artisan-командами. Для просмотра доступных команд выполните в терминале команду php artisan list make.
+
+Папка Console содержит все дополнительные Artisan-команды для вашего приложения. Эти команды можно сгенерировать командой make:command. Также этот каталог содержит ядро вашей консоли, где регистрируются ваши дополнительные Artisan-команды и определяются ваши запланированные задачи.
+
+Изначально этого каталога нет, он создаётся Artisan-командами event:generate и make:event. В папке Events, как можно догадаться, хранятся классы событий. События можно использовать для оповещения других частей приложения о каком-либо событии, что обеспечивает большую гибкость и модульность.
+
+Папка Exceptions содержит обработчик исключений вашего приложения. Эта папка также является хорошим местом для размещения всех исключений, возникающих в вашем приложении. Если вы хотите изменить то, как журналируются и отображаются ваши исключения, вам надо изменить класс Handler в этом каталоге.
+
+Папка Http содержит ваши контроллеры, посредники и запросы форм. Здесь будет размещена почти вся логика обработки запросов, входящих в приложение.
+
+Изначально этого каталога нет, он создаётся Artisan-командой make:job. В папке Jobs хранятся задачи для вашего приложения. Задачи могут быть обработаны вашим приложением в порядке очереди, а также их можно запустить синхронно в рамках прохождения текущего запроса. Иногда задачи, которые запускаются синхронно во время текущего запроса, называют «командами», потому что они реализуют шаблон Команда.
+
+Изначально этого каталога нет, он создаётся Artisan-командами event:generate и make:listener. Папка Listeners содержит классы обработчиков для ваших событий. Слушатели событий получают экземпляр события и выполняют логику в ответ на это событие. Например, событие UserRegistered может быть обработано слушателем SendWelcomeEmail.
+
+Изначально этого каталога нет, он создаётся Artisan-командой make:mail. Каталог Mail содержит все ваши классы, отвечающие за отправляемые вашим приложением email-сообщения. Почтовые объекты позволяют вам инкапсулировать всю логику создания email-сообщений в единый, простой класс, который можно отправить методом Mail::send().
+
+Изначально этого каталога нет, он создаётся Artisan-командой make:notification. Каталог Notifications содержит все «транзакционные» уведомления, которые отправляются вашим приложением, например, простое уведомление о событии, произошедшем в вашем приложении. Возможность уведомлений в Laravel абстрагирует отправку уведомлений через разные драйверы, такие как email, Slack, SMS или сохранение в БД.
+
+Папка Providers содержит все сервис-провайдеры для вашего приложения. Сервис-провайдеры загружают ваше приложение, привязывая сервисы в сервис-контейнер, регистрируя события, и выполняя любые другие задачи для подготовки вашего приложения к входящим запросам.
+
+В свежеустановленном приложении Laravel эта папка уже содержит несколько провайдеров. При необходимости вы можете добавлять свои провайдеры в эту папку.
+
+Изначально этого каталога нет, он создаётся Artisan-командой make:policy. Папка Policies содержит классы политик авторизации. Политики служат для определения, разрешено ли пользователю данное действие над ресурсом. Подробнее читайте в документации по авторизации.
+
+В папке Commands, разумеется, хранятся команды для вашего приложения. Команды представляют собой задания, которые могут быть обработаны вашим приложениям в порядке очереди, а также задачи, которые вы можете запустить синхронно в рамках прохождения текущего запроса.
+
+##Routing
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b routing
+- Выполнить команду git pull origin routing
+- https://laravel.su/docs/8.x/routing
+- https://laravel.com/docs/8.x/routing
+
+##Controllers
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b controllers
+- Выполнить команду git pull origin controllers
+- https://laravel.com/docs/8.x/controllers
+- https://laravel.su/docs/8.x/controllers
+
+##Models
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b models
+- Выполнить команду git pull origin models
+- https://laravel.com/docs/8.x/eloquent
+- https://laravel.su/docs/8.x/eloquent
+
+##Migrations, seeds, factories
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b migrations
+- Выполнить команду git pull origin migrations
+- https://laravel.com/docs/8.x/migrations
+- https://laravel.com/docs/8.x/seeding#writing-seeders
+- https://laravel.com/docs/8.x/database-testing#defining-model-factories
+- https://laravel.su/docs/8.x/seeding#writing-seeders
+- https://laravel.su/docs/8.x/database-testing#defining-model-factories
+
+##Middleware
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b middleware
+- Выполнить команду git pull origin middleware
+- https://laravel.com/docs/8.x/middleware
+- https://laravel.su/docs/8.x/middleware
+
+##View
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b view
+- Выполнить команду git pull origin view
+- Выполнить npm run watch
+- https://laravel.com/docs/8.x/views
+- https://laravel.su/docs/8.x/views
+
+##Service Provider
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b service-provider
+- Выполнить команду git pull origin service-provider
+- https://laravel.com/docs/8.x/providers
+- https://laravel.su/docs/8.x/providers
+
+##Facades
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b facades
+- Выполнить команду git pull origin facades
+- https://laravel.com/docs/8.x/facades
+- https://laravel.su/docs/8.x/facades
+
+##Jobs
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b jobs
+- Выполнить команду git pull origin jobs
+- https://laravel.com/docs/8.x/queues#creating-jobs
+- https://laravel.su/docs/8.x/queues#creating-jobs
+
+
+##Events. Notifications
+- Выполнить команду git checkout master
+- Выполнить команду git checkout -b notifications
+- Выполнить команду git pull origin notifications
+- https://laravel.com/docs/8.x/notifications
+- https://laravel.su/docs/8.x/notifications
+- https://laravel.com/docs/8.x/events
+- https://laravel.su/docs/8.x/events
