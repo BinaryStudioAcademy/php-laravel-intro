@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'name' => 'Binary Studio'
+    ]);
 });
+
+Route::get('profiles', function() {
+    return view('profiles');
+});
+
+Route::get('vue', function() {
+    return view('vue.vue');
+});
+
