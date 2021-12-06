@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('App\Repository\Photo\EloquentPhotoRepositoryInterface', 'App\Repository\Photo\EloquentPhotoRepository');
     }
 
     /**
