@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('photos', [\App\Http\Controllers\PhotoController::class, 'all']);
+Route::get('photos/{id}', [\App\Http\Controllers\PhotoController::class, 'getById']);
