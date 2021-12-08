@@ -1,7 +1,7 @@
 #Guide
 
 ##Инструкция по установке проекта
-*Должны быть предустановлены все зависимости*
+ *Должны быть предустановлены все зависимости*
 - Выполнить команду <code>composer install</code>
 - Выполнить команду <code>npm install</code>
 - Создать файл .env и скопировать туда содержимое файла .env.example
@@ -11,7 +11,7 @@
 - Выполнить команду <code>npm run watch</code>
 
 ##Инструкция по установке проекта через docker
-*Требуется пред установка docker, docker-compose*
+ *Требуется пред установка docker, docker-compose* 
 - Создать файл .env и скопировать туда содержимое файла .env.example
 - Создать файл docker-compose.override.yml и скопировать туда содержимое файла docker-compose.override.yml.example
 - Выполнить команду <code>docker-compose up -d</code>
