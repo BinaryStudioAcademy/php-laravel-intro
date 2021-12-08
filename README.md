@@ -6,7 +6,7 @@
 - Выполнить команду <code>npm install</code>
 - Создать файл .env и скопировать туда содержимое файла .env.example
 - Выполнить команду <code>php artisan key:generate</code>
-- Выполнить команду <code>php artisan migrate</code>
+- Выполнить команду <code>php artisan migrate --seed</code>
 - Выполнить команду <code>php artisan serve</code>
 - Выполнить команду <code>npm run watch</code>
 
@@ -17,7 +17,7 @@
 - Выполнить команду <code>docker-compose up -d</code>
 - Выполнить команду <code>docker-compose exec app composer install</code>
 - Выполнить команду <code>docker-compose exec app php artisan key:generate</code>
-- Выполнить команду <code>docker-compose exec app php artisan migrate</code>
+- Выполнить команду <code>docker-compose exec app php artisan migrate --seed</code>
 - Выполнить команду <code>npm run watch</code>
 
 Наш сайт доступен http://0.0.0.0:8080/
