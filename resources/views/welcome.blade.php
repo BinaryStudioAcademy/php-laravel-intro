@@ -18,6 +18,10 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .my-name {
+                color: black;
+                font-size: 48px;
+            }
         </style>
     </head>
     <body class="antialiased">

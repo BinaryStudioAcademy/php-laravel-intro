@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome', [
-        'name' => 'Binary Studio'
+        'name' => 'Binary Studio Academy'
     ]);
 });
 

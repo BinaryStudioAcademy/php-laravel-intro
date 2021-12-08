@@ -10,6 +10,8 @@
 <body>
 
 <div id="app">
+    Yo!
+
     @yield('content')
 </div>
 
