@@ -18,3 +18,20 @@ Route::group(['prefix' => 'posts'], function() {
         return redirect()->route('users-route');
     });
 });
+
+
+Route::get('/user/{name}', function ($name) {
+    //
+})->where('name', '[A-Za-z]+');
+
+Route::get('/user/{id}', function ($id) {
+    //
+})->where('id', '[0-9]+');
+
+Route::get('/user/{id}/{name}', function ($id, $name) {
+    //
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+
+Route::get('/search/{search}', function ($search) {
+    return $search;
+})->where('search', '.*');
