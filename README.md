@@ -1,23 +1,33 @@
-#Guide 
+#Guide
 
 ##Инструкция по установке проекта
+*Должны быть предустановлены все зависимости*
+- Выполнить команду <code>composer install</code>
+- Выполнить команду <code>npm install</code>
+- Создать файл .env и скопировать туда содержимое файла .env.example
+- Выполнить команду <code>php artisan key:generate</code>
+- Выполнить команду <code>php artisan migrate</code>
+- Выполнить команду <code>php artisan serve</code>
+- Выполнить команду <code>npm run watch</code>
 
-- Выполнить команду git clone git@github.com:RomanMahola/laravel-intro.git
-- Выполнить команду cd laravel-intro/
-- Выполнить команду composer install
-- Выполнить команду npm install
-- Скопировать файл .env.example в .env
-- Прописать кредлы для базы
-- Выполнить команду php artisan migrate
-- Выполнить команду php artisan serve
+##Инструкция по установке проекта через docker
+*Требуется пред установка docker, docker-compose*
+- Создать файл .env и скопировать туда содержимое файла .env.example
+- Создать файл docker-compose.override.yml и скопировать туда содержимое файла docker-compose.override.yml.example
+- Выполнить команду <code>docker-compose up -d</code>
+- Выполнить команду <code>docker-compose exec app composer install</code>
+- Выполнить команду <code>docker-compose exec app php artisan key:generate</code>
+- Выполнить команду <code>docker-compose exec app php artisan migrate</code>
+- Выполнить команду <code>npm run watch</code>
+
+Наш сайт доступен http://0.0.0.0:8080/
 
 ##Laravel structure and Artisan
-- Выполнить команду git checkout -b structure
-- Выполнить команду git pull origin structure
+- Выполнить команду git checkout structure
 
 Корневой каталог
 
-Папка app, как вы можете догадаться, содержит код ядра вашего приложения . Ниже мы рассмотрим эту папку подробнее; однако, почти все классы вашего приложения будут находится в этой папке.
+Папка app, как вы можете догадаться, содержит код ядра вашего приложения. Ниже мы рассмотрим эту папку подробнее; однако, почти все классы вашего приложения будут находится в этой папке.
 
 Папка bootstrap содержит файлы, которые загружают фреймворк и настраивают автозагрузку. Также в папке bootstrap находится папка cache, которая содержит сгенерированные фреймворком файлы для оптимизации производительности — например, кэш-файлы маршрутов и сервисов.
 
@@ -80,30 +90,22 @@
 В папке Commands, разумеется, хранятся команды для вашего приложения. Команды представляют собой задания, которые могут быть обработаны вашим приложениям в порядке очереди, а также задачи, которые вы можете запустить синхронно в рамках прохождения текущего запроса.
 
 ##Routing
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b routing
-- Выполнить команду git pull origin routing
+- Выполнить команду git checkout routing
 - https://laravel.su/docs/8.x/routing
 - https://laravel.com/docs/8.x/routing
 
 ##Controllers
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b controllers
-- Выполнить команду git pull origin controllers
+- Выполнить команду git checkout controllers
 - https://laravel.com/docs/8.x/controllers
 - https://laravel.su/docs/8.x/controllers
 
 ##Models
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b models
-- Выполнить команду git pull origin models
+- Выполнить команду git checkout models
 - https://laravel.com/docs/8.x/eloquent
 - https://laravel.su/docs/8.x/eloquent
 
 ##Migrations, seeds, factories
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b migrations
-- Выполнить команду git pull origin migrations
+- Выполнить команду git checkout migrations
 - https://laravel.com/docs/8.x/migrations
 - https://laravel.com/docs/8.x/seeding#writing-seeders
 - https://laravel.com/docs/8.x/database-testing#defining-model-factories
@@ -111,46 +113,34 @@
 - https://laravel.su/docs/8.x/database-testing#defining-model-factories
 
 ##Middleware
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b middleware
-- Выполнить команду git pull origin middleware
+- Выполнить команду git checkout middleware
 - https://laravel.com/docs/8.x/middleware
 - https://laravel.su/docs/8.x/middleware
 
 ##View
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b view
-- Выполнить команду git pull origin view
+- Выполнить команду git checkout view
 - Выполнить npm run watch
 - https://laravel.com/docs/8.x/views
 - https://laravel.su/docs/8.x/views
 
 ##Service Provider
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b service-provider
-- Выполнить команду git pull origin service-provider
+- Выполнить команду git checkout service-provider
 - https://laravel.com/docs/8.x/providers
 - https://laravel.su/docs/8.x/providers
 
 ##Facades
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b facades
-- Выполнить команду git pull origin facades
+- Выполнить команду git checkout facades
 - https://laravel.com/docs/8.x/facades
 - https://laravel.su/docs/8.x/facades
 
 ##Jobs
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b jobs
-- Выполнить команду git pull origin jobs
+- Выполнить команду git checkout jobs
 - https://laravel.com/docs/8.x/queues#creating-jobs
 - https://laravel.su/docs/8.x/queues#creating-jobs
 
 
 ##Events. Notifications
-- Выполнить команду git checkout master
-- Выполнить команду git checkout -b notifications
-- Выполнить команду git pull origin notifications
+- Выполнить команду git checkout notifications
 - https://laravel.com/docs/8.x/notifications
 - https://laravel.su/docs/8.x/notifications
 - https://laravel.com/docs/8.x/events
