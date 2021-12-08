@@ -12,7 +12,7 @@ class AgeMiddleware
 
     public function handle(Request $request, Closure $next)
     {
-        if(isset($request->age) &&$request->age < self::MIN_AGE) {
+        if(isset($request->age) && $request->age < self::MIN_AGE) {
             return abort(Response::HTTP_FORBIDDEN);
         }
 

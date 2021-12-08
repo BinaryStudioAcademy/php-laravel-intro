@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// http://0.0.0.0:8080/users?age=1
 Route::group(['prefix' => 'users', 'middleware' => ['age']], function() {
    Route::get('/', function () {
        return 1;
