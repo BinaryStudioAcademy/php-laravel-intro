@@ -24,7 +24,14 @@ class UpdatePhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name is required!'
         ];
     }
 }
