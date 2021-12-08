@@ -1,15 +1,26 @@
 #Guide 
 
 ##Инструкция по установке проекта
+ *Должны быть предустановлены все зависимости*
+- Выполнить команду <code>composer install</code>
+- Выполнить команду <code>npm install</code>
+- Создать файл .env и скопировать туда содержимое файла .env.example
+- Выполнить команду <code>php artisan key:generate</code>
+- Выполнить команду <code>php artisan migrate</code>
+- Выполнить команду <code>php artisan serve</code>
+- Выполнить команду <code>npm run watch</code>
 
-- Выполнить команду git clone git@github.com:RomanMahola/laravel-intro.git
-- Выполнить команду cd laravel-intro/
-- Выполнить команду composer install
-- Выполнить команду npm install
-- Скопировать файл .env.example в .env
-- Прописать кредлы для базы
-- Выполнить команду php artisan migrate
-- Выполнить команду php artisan serve
+##Инструкция по установке проекта через docker
+ *Требуется пред установка docker, docker-compose* 
+- Создать файл .env и скопировать туда содержимое файла .env.example
+- Создать файл docker-compose.override.yml и скопировать туда содержимое файла docker-compose.override.yml.example
+- Выполнить команду <code>docker-compose up -d</code>
+- Выполнить команду <code>docker-compose exec app composer install</code>
+- Выполнить команду <code>docker-compose exec app php artisan key:generate</code>
+- Выполнить команду <code>docker-compose exec app php artisan migrate</code>
+- Выполнить команду <code>npm run watch</code>
+
+Наш сайт доступен http://0.0.0.0:8080/
 
 ##Laravel structure and Artisan
 - Выполнить команду git checkout -b structure

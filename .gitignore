@@ -13,3 +13,13 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/dbdata/
+/public/storage/
+/public/js/app.js
+/public/js/vendor.js
+/public/css/app.css
+/.vagrant
+.env.testing
+.DS_Store
+.composer
+/dbdata

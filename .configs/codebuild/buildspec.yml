@@ -1,0 +1,49 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      php: 8.1
+      nodejs: 10
+      docker: 19
+    commands:
+      - |
+        ./scripts/install_composer.sh
+        mv composer.phar /usr/local/bin/composer
+      - docker login -u $DOCKER_USER -p $DOCKER_TOKEN
+      - docker pull mysql:5.6
+  build:
+   commands:
+     - echo Build started on `date`
+     - echo Installing composer dependencies
+     - composer install --no-progress --no-suggest
+     - echo Installing npm dependencies
+     - npm install
+     - npm run production
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - ./scripts/run_db.sh
+      - cp .env.testing.example .env.testing
+      - echo Checking php code style ...
+      - composer run-script php-cs
+      - echo Checking js code ...
+      - npm run eslint
+      - echo Running tests ...
+      - ./vendor/bin/phpunit --log-junit report.xml
+      - rm -rf node_modules
+      - aws s3 cp s3://${S3_BUCKET}/${DOT_ENV_FILE} .env
+reports:
+  php-reports:
+    files:
+      - "report.xml"
+    file-format: "JUNITXML"
+artifacts:
+  files:
+    - '**/*'
+cache:
+  paths:
+    - /root/.composer/**/*
+    - /root/.npm/**/*
+    - /usr/lib/node_modules/**/*
