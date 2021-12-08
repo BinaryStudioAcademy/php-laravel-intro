@@ -1,4 +1,4 @@
-#Guide
+#Guide + Конспект
 
 ##Инструкция по установке проекта
  *Должны быть предустановлены все зависимости*
@@ -6,9 +6,10 @@
 - Выполнить команду <code>npm install</code>
 - Создать файл .env и скопировать туда содержимое файла .env.example
 - Выполнить команду <code>php artisan key:generate</code>
+- *(Необязательно)* Выполнить команду <code>docker-compose exec app php artisan queue:table</code>
 - Выполнить команду <code>php artisan migrate --seed</code>
 - Выполнить команду <code>php artisan serve</code>
-- Выполнить команду <code>npm run watch</code>
+- *(Необязательно)* Выполнить команду <code>npm run watch</code>
 
 ##Инструкция по установке проекта через docker
  *Требуется пред установка docker, docker-compose* 
@@ -17,8 +18,9 @@
 - Выполнить команду <code>docker-compose up -d</code>
 - Выполнить команду <code>docker-compose exec app composer install</code>
 - Выполнить команду <code>docker-compose exec app php artisan key:generate</code>
+- *(Необязательно)* Выполнить команду <code>docker-compose exec app php artisan queue:table</code>
 - Выполнить команду <code>docker-compose exec app php artisan migrate --seed</code>
-- Выполнить команду <code>npm run watch</code>
+- *(Необязательно)* Выполнить команду <code>npm run watch</code>
 
 Наш сайт доступен http://0.0.0.0:8080/
 
@@ -145,3 +147,22 @@
 - https://laravel.su/docs/8.x/notifications
 - https://laravel.com/docs/8.x/events
 - https://laravel.su/docs/8.x/events
+
+
+## links
+- https://laravel.com/
+- https://www.docker.com/
+- https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+- https://github.com/laravel/framework
+- https://www.statista.com/statistics/1124699/worldwide-developer-survey-most-used-frameworks-web/
+- https://asperbrothers.com/blog/laravel-vs-symfony/
+- https://en.wikipedia.org/wiki/Laravel
+- https://trends.builtwith.com/framework/Laravel
+- https://www.cyblance.com/php-framework/8-outstanding-php-laravel-features-that-reflect-over-the-frameworks-performance/
+- https://packagist.org/packages/laravel/laravel
+- https://packagist.org/packages/laravel/framework
+- https://elisdn.ru/blog/148/dependency-injection
+- https://laracasts.com/
+- https://laracon.net/
+- https://nova.laravel.com/
+- https://phpunit.readthedocs.io/
