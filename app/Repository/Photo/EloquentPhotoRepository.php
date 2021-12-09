@@ -10,13 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 class EloquentPhotoRepository implements EloquentPhotoRepositoryInterface
 {
 
-    public function createPhoto(array $data): Photo
+    public function createPhoto(Photo $photo): Photo
     {
 
 //        DB::table('users')->insert([]);
-        $photo = new Photo();
-
-        $photo->name = $data['format'];
 
         $photo->save();
 

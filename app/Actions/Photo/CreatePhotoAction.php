@@ -16,6 +16,10 @@ class CreatePhotoAction
 
     public function execute(array $data): Photo
     {
-        return $this->eloquentPhotoRepository->createPhoto($data);
+
+        $photo = new Photo();
+        $photo->name = $data['format'];
+
+        return $this->eloquentPhotoRepository->createPhoto($photo);
     }
 }
