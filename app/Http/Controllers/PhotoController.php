@@ -10,13 +10,6 @@ use Illuminate\Http\Response;
 
 class PhotoController extends Controller
 {
-    public function create(Request $request, CreatePhotoAction $createPhotoAction)
-    {
-        $photo = $createPhotoAction->execute($request->all());
-
-        return response()->json(['data' => $photo], Response::HTTP_CREATED);
-    }
-
     public function getById(int $id, GetPhotoByIdAction $getPhotoByIdAction)
     {
         $photo = $getPhotoByIdAction->execute($id);
@@ -24,8 +17,15 @@ class PhotoController extends Controller
         return response()->json(['data' => $photo], Response::HTTP_OK);
     }
 
+    public function create(Request $request, CreatePhotoAction $createPhotoAction)
+    {
+        $photo = $createPhotoAction->execute($request->all());
+
+        return response()->json(['data' => $photo], Response::HTTP_CREATED);
+    }
+
     public function all(GetPhotosAction $getPhotosAction)
     {
-        dd($getPhotosAction->execute());
+        return response()->json(['data' => $getPhotosAction->execute()], Response::HTTP_OK);
     }
 }

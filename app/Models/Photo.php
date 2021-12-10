@@ -10,11 +10,15 @@ class Photo extends Model
     use HasFactory;
 
     protected $table = 'photos';
-    protected $appends = [];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function formats()
+    {
+        return $this->hasMany(Format::class);
     }
 
 }

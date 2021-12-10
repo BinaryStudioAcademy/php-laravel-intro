@@ -13,7 +13,7 @@ class EloquentPhotoRepository implements EloquentPhotoRepositoryInterface
     public function createPhoto(Photo $photo): Photo
     {
 
-//        DB::table('users')->insert([]);
+//        DB::table('photos')->insert($data);
 
         $photo->save();
 
@@ -22,12 +22,8 @@ class EloquentPhotoRepository implements EloquentPhotoRepositoryInterface
 
     public function getById(int $id): Photo
     {
-//        DB::table('users')->where('id', $id)->get();
-//        DB::table('users')
-//            ->select(DB::raw('count(*) as user_count, status'))
-//            ->where('status', '<>', 1)
-//            ->groupBy('status')
-//            ->get();
+//        DB::table('photos')->where('id', $id)->get();
+
         return Photo::where('id', $id)->firstOrFail();
     }
 
